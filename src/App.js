@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import clock from './clock-face.jpg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App({hour, min, sec}) {
+    const hourRotate = hour * 360/12 + min * 360/12/60 - 90
+    const minRotate = min * 360/60 + sec * 360/60/60 - 90
+    return (
+        <div className="App">
+            <header className="App-header">
+                <div className="clock">
+                    <div className="clock-hour" style={{transform: `rotateZ(${hourRotate}deg)`}} />
+                    <div className="clock-minute" style={{transform: `rotateZ(${minRotate}deg)`}} />
+                    <img src={clock} className="App-logo" alt="logo"/>
+                </div>
+            </header>
+        </div>
+    );
 }
 
 export default App;
